@@ -24,7 +24,7 @@ function Prompt(props) {
 }
 
 Prompt.PropTypes = {
-  battleTag: PropTypes.string,
+  searchText: PropTypes.string,
   onUpdateTag: PropTypes.func.isRequired,
   onSubmitTag: PropTypes.func.isRequired
 }

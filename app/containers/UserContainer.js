@@ -3,65 +3,80 @@ var Prompt = require('../components/Prompt')
 var User = require('../components/User')
 var HalfWrapper = require('../components/HalfWrapper')
 var styles = require('../styles')
+var helpers = require('../utils/helpers')
 
 var UserContainer = React.createClass({
   getInitialState: function() {
     return {
       playerOne: {
         text: '',
+        name: '',
         data: {},
         isLoading: false
       },
       playerTwo: {
         text: '',
+        name: '',
         data: {},
         isLoading: false
       }
     }
   },
   handlePlayerOneUpdate: function(e) {
-    data = this.state.playerOne.data
+    var data = this.state.playerOne.data
+    var name = this.state.playerOne.name
+    var isLoading = this.state.playerOne.isLoading
     this.setState({
       playerOne: {
         text: e.target.value,
-        data: data
+        name: name,
+        data: data,
+        isLoading: isLoading
       }
     })
   },
   handlePlayerTwoUpdate: function(e) {
-    data = this.state.playerTwo.data
+    var data = this.state.playerTwo.data
+    var name = this.state.playerTwo.name
+    var isLoading = this.state.playerTwo.isLoading
     this.setState({
       playerTwo: {
         text: e.target.value,
-        data: data
+        name: name,
+        data: data,
+        isLoading: isLoading
       }
     })
   },
   handlePlayerOneSubmit: function(e) {
     e.preventDefault()
     var username = this.state.playerOne.text
-    this.setState({
-      playerOne: {
-        text: '',
-        data: {
-          name: username
-        },
-        isLoading: true
-      }
-    })
+    helpers.getBattleTagData(username)
+    .then(function(userData) {
+      this.setState({
+        playerOne: {
+          text: '',
+          name: username,
+          data: userData,
+          isLoading: false
+        }
+      })
+    }.bind(this))    
   },
   handlePlayerTwoSubmit: function(e) {
     e.preventDefault()
     var username = this.state.playerTwo.text
-    this.setState({
-      playerTwo: {
-        text: '',
-        data: {
-          name: username
-        },
-        isLoading: true
-      }
-    })
+    helpers.getBattleTagData(username)
+    .then(function(userData) {
+      this.setState({
+        playerTwo: {
+          text: '',
+          name: username,
+          data: userData,
+          isLoading: false
+        }
+      })
+    }.bind(this))    
   },
   render: function() {
     return (
@@ -69,14 +84,18 @@ var UserContainer = React.createClass({
       <HalfWrapper> 
         <User 
           playerData={this.state.playerOne.data}
-          battleTag={this.state.playerOne.text}
+          battleTag={this.state.playerOne.name}
+          searchText={this.state.playerOne.text}
+          isLoading={this.state.playerOne.isLoading}
           onUpdateTag={this.handlePlayerOneUpdate}
           onSubmitTag={this.handlePlayerOneSubmit}/>
       </HalfWrapper>
       <HalfWrapper>
         <User 
           playerData={this.state.playerTwo.data}
-          battleTag={this.state.playerTwo.text}
+          battleTag={this.state.playerTwo.name}
+          searchText={this.state.playerTwo.text}
+          isLoading={this.state.playerTwo.isLoading}
           onUpdateTag={this.handlePlayerTwoUpdate}
           onSubmitTag={this.handlePlayerTwoSubmit}/>
       </HalfWrapper>
