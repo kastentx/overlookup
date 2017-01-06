@@ -1,16 +1,18 @@
 var React = require('react')
 var styles = require('../styles')
+var Link = require('react-router').Link
+var LargeWrapper = require('./LargeWrapper')
 
-var Intro = React.createClass({
-  render: function() {
-    return (
-      <div className='jumbotron sm-col-8 sm-col-offset-2 text-center' style={styles.transparentBg}>
-      	<h1>welcome to overlook</h1>
-      	<h3 style={{color: 'gray'}}>click to begin...</h3>
-      	<button type='button' className='btn btn-large btn-success' style={styles.space}>Let's Go!</button>
-      </div>
-    )
-  }
-})
+function Intro(props) {
+  return (
+    <LargeWrapper>
+      <h1>welcome to overlook</h1>
+      <p className='lead' style={{color: 'gray'}}>click to begin...</p>
+      <Link to='/playerLookup'>
+        <button type='button' className='btn btn-large btn-success' style={styles.space}>Let's Go!</button>
+      </Link>
+    </LargeWrapper>
+  )
+}
 
 module.exports = Intro
