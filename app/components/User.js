@@ -1,10 +1,11 @@
 var React = require('react')
 var Prompt = require('./Prompt')
 var UserInfo = require('./UserInfo')
+var styles = require('../styles')
 
 function User(props) {
   return (
-    <div>
+    <div style={styles.space}>
       <Prompt 
         battleTag={props.battleTag}
         onUpdateTag={props.onUpdateTag}
