@@ -7,40 +7,61 @@ var styles = require('../styles')
 var UserContainer = React.createClass({
   getInitialState: function() {
     return {
-      user: playerData,
       playerOne: {
         text: '',
-        data: '',
+        data: {},
         isLoading: false
       },
       playerTwo: {
         text: '',
-        data: '',
+        data: {},
         isLoading: false
       }
     }
   },
   handlePlayerOneUpdate: function(e) {
+    data = this.state.playerOne.data
     this.setState({
       playerOne: {
-        text: e.target.value
+        text: e.target.value,
+        data: data
       }
     })
   },
   handlePlayerTwoUpdate: function(e) {
+    data = this.state.playerTwo.data
     this.setState({
       playerTwo: {
-        text: e.target.value
+        text: e.target.value,
+        data: data
       }
     })
   },
   handlePlayerOneSubmit: function(e) {
     e.preventDefault()
-
+    var username = this.state.playerOne.text
+    this.setState({
+      playerOne: {
+        text: '',
+        data: {
+          name: username
+        },
+        isLoading: true
+      }
+    })
   },
   handlePlayerTwoSubmit: function(e) {
     e.preventDefault()
-    
+    var username = this.state.playerTwo.text
+    this.setState({
+      playerTwo: {
+        text: '',
+        data: {
+          name: username
+        },
+        isLoading: true
+      }
+    })
   },
   render: function() {
     return (
@@ -50,14 +71,14 @@ var UserContainer = React.createClass({
           playerData={this.state.playerOne.data}
           battleTag={this.state.playerOne.text}
           onUpdateTag={this.handlePlayerOneUpdate}
-          onSubmitTag={this.handleSubmitTag('playerOne')}/>
+          onSubmitTag={this.handlePlayerOneSubmit}/>
       </HalfWrapper>
       <HalfWrapper>
         <User 
           playerData={this.state.playerTwo.data}
           battleTag={this.state.playerTwo.text}
           onUpdateTag={this.handlePlayerTwoUpdate}
-          onSubmitTag={this.handleSubmitTag('playerTwo')}/>
+          onSubmitTag={this.handlePlayerTwoSubmit}/>
       </HalfWrapper>
     </div>
     )

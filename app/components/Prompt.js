@@ -1,4 +1,5 @@
 var React = require('react')
+var PropTypes = React.PropTypes
 
 function Prompt(props) {
   return (
@@ -20,6 +21,12 @@ function Prompt(props) {
       </div>
     </form>
   )
+}
+
+Prompt.PropTypes = {
+  battleTag: PropTypes.string,
+  onUpdateTag: PropTypes.func.isRequired,
+  onSubmitTag: PropTypes.func.isRequired
 }
 
 module.exports = Prompt       
