@@ -1,6 +1,5 @@
 # Overlook
-##### By: Nick Kasten
-###### @kastencode
+###### @kastentx
 
 This is a `overlook`. An app that lets you make a side-by-side comparison of player data for the game **Overwatch**.
 
