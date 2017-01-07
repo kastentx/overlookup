@@ -1,11 +1,11 @@
 # Overlook
 ###### @kastentx
 
-This is a `overlook`. An app that lets you make a side-by-side comparison of player data for the game **Overwatch**.
+This is `overlook`. An app that lets you make a side-by-side comparison of player data for the game **Overwatch**.
 
 This takes advantage of the awesome data made available by the Overwatch API hosted at http://www.owapi.net and was made using React, React Router and Axios. Babel was used to transpile JSX and Webpack bundles it all together.
 
-**Make sure to enter BattleTags with the format `TEXT-NUMBER` and they ARE _Case-SensitivE_**
+**Make sure to enter BattleTags with the format `TEXT-NUMBER` and they ARE _case-sensitive_**
 
 #### To Install:
 
