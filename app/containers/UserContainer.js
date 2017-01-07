@@ -69,6 +69,14 @@ var UserContainer = React.createClass({
   handlePlayerTwoSubmit: function(e) {
     e.preventDefault()
     var username = this.state.playerTwo.text
+    var player = this.state.playerTwo.player
+    this.setState({
+      playerTwo: {
+        text: '',
+        player: player,
+        isLoading: true
+      }
+    })
     helpers.getBattleTagData(username)
     .then(function(userData) {
       this.setState({
