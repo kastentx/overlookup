@@ -11,7 +11,7 @@ var Intro	= require('../components/Intro')
 var routes = (
 	<Router history={hashHistory}>
 		<Route path='/' component={Main}>
-			<IndexRoute component={Intro}/>
+			<IndexRoute component={Intro} />
 			<Route path='/playerLookup' component={HomeContainer} />
 		</Route>
 	</Router>

@@ -14,11 +14,10 @@ function User(props) {
           onUpdateTag={props.onUpdateTag}
           onSubmitTag={props.onSubmitTag} />
       </div>
-      <div style={styles.space}>
+      <div className='text-center' style={styles.space}>
         <UserInfo 
           isLoading={props.isLoading}
-          battleTag={props.battleTag}
-          data={props.playerData} />
+          player={props.playerData} />
       </div>
     </div>
   )
@@ -26,7 +25,6 @@ function User(props) {
 
 User.propTypes= {
   isLoading: PropTypes.bool.isRequired,
-  battleTag: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
   onUpdateTag: PropTypes.func.isRequired,
   onSubmitTag: PropTypes.func.isRequired,

@@ -10,40 +10,36 @@ var UserContainer = React.createClass({
     return {
       playerOne: {
         text: '',
-        name: '',
-        data: {},
+        player: {},
         isLoading: false
       },
       playerTwo: {
         text: '',
-        name: '',
-        data: {},
+        player: {},
         isLoading: false
       }
     }
   },
   handlePlayerOneUpdate: function(e) {
-    var data = this.state.playerOne.data
+    var player = this.state.playerOne.player
     var name = this.state.playerOne.name
     var isLoading = this.state.playerOne.isLoading
     this.setState({
       playerOne: {
         text: e.target.value,
-        name: name,
-        data: data,
+        player: player,
         isLoading: isLoading
       }
     })
   },
   handlePlayerTwoUpdate: function(e) {
-    var data = this.state.playerTwo.data
+    var player = this.state.playerTwo.player
     var name = this.state.playerTwo.name
     var isLoading = this.state.playerTwo.isLoading
     this.setState({
       playerTwo: {
         text: e.target.value,
-        name: name,
-        data: data,
+        player: player,
         isLoading: isLoading
       }
     })
@@ -51,12 +47,11 @@ var UserContainer = React.createClass({
   handlePlayerOneSubmit: function(e) {
     e.preventDefault()
     var username = this.state.playerOne.text
-    var data = this.state.playerOne.data
+    var player = this.state.playerOne.player
     this.setState({
       playerOne: {
         text: '',
-        name: username,
-        data: data,
+        player: player,
         isLoading: true
       }
     })
@@ -65,8 +60,7 @@ var UserContainer = React.createClass({
       this.setState({
         playerOne: {
           text: '',
-          name: username,
-          data: userData,
+          player: userData,
           isLoading: false
         }
       })
@@ -80,8 +74,7 @@ var UserContainer = React.createClass({
       this.setState({
         playerTwo: {
           text: '',
-          name: username,
-          data: userData,
+          player: userData,
           isLoading: false
         }
       })
@@ -89,24 +82,22 @@ var UserContainer = React.createClass({
   },
   render: function() {
     return (
-    <div className='col-sm-12' style={styles.testBg}>
+    <div className='col-sm-12'>
       <HalfWrapper> 
         <User 
-          playerData={this.state.playerOne.data}
-          battleTag={this.state.playerOne.name}
+          playerData={this.state.playerOne.player}
           searchText={this.state.playerOne.text}
           isLoading={this.state.playerOne.isLoading}
           onUpdateTag={this.handlePlayerOneUpdate}
-          onSubmitTag={this.handlePlayerOneSubmit}/>
+          onSubmitTag={this.handlePlayerOneSubmit} />
       </HalfWrapper>
       <HalfWrapper>
         <User 
-          playerData={this.state.playerTwo.data}
-          battleTag={this.state.playerTwo.name}
+          playerData={this.state.playerTwo.player}
           searchText={this.state.playerTwo.text}
           isLoading={this.state.playerTwo.isLoading}
           onUpdateTag={this.handlePlayerTwoUpdate}
-          onSubmitTag={this.handlePlayerTwoSubmit}/>
+          onSubmitTag={this.handlePlayerTwoSubmit} />
       </HalfWrapper>
     </div>
     )
