@@ -6,7 +6,7 @@ var UserContainer = require('../containers/UserContainer')
 function Home(props) {
 	return (
 		<LargeWrapper>
-			<p className='lead'>{props.text}</p>	
+			<h3>{props.text}</h3>	
 			<UserContainer/>
 		</LargeWrapper>
 	)

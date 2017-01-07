@@ -4,10 +4,10 @@ var styles = {
 	},
   space: {
     marginTop: '25px',
-    marginBottom: '25px'
   },
   testBg: {
-    background: 'lightBlue'
+    background: 'lightBlue',
+    padding: '25px'
   }
 }
 
